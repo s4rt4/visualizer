@@ -1,0 +1,31 @@
+[package]
+name = "audio_visualizer"
+version = "0.1.0"
+edition = "2021"
+
+[[bin]]
+name = "audio_visualizer"
+path = "src/main.rs"
+
+[dependencies]
+eframe = { version = "0.29", features = ["default_fonts"] }
+egui = "0.29"
+egui_extras = { version = "0.29", features = ["svg"] }
+cpal = "0.15"
+rustfft = "6.2"
+ringbuf = "0.4"
+num-complex = "0.4"
+parking_lot = "0.12"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+rand = "0.8"
+image = { version = "0.25", default-features = false, features = ["ico", "png"] }
+
+[build-dependencies]
+winres = "0.1"
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+strip = true
